@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joypurhat eFootball Club | Admin Enabled</title>
+    <title>Joypurhat eFootball Club | Dynamic Admin</title>
     <style>
         :root {
             --bg-dark: #0b0e14;
@@ -15,161 +15,157 @@
             --text-main: #ffffff;
             --text-muted: #8b949e;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            background: linear-gradient(135deg, #0b0e14 0%, #121824 100%);
-            padding-bottom: 60px;
-        }
-
-        /* Nav Bar & Logo */
-        nav {
-            background: rgba(22, 27, 34, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--primary);
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); background: linear-gradient(135deg, #0b0e14 0%, #121824 100%); padding-bottom: 60px; }
+        nav { background: rgba(22, 27, 34, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary); padding: 12px; display: flex; align-items: center; justify-content: space-between; }
         .logo-section { display: flex; align-items: center; gap: 8px; font-weight: bold; color: var(--primary); }
         .nav-links { display: flex; gap: 10px; overflow-x: auto; white-space: nowrap; }
         nav a { color: var(--text-main); text-decoration: none; font-size: 12px; font-weight: bold; padding: 5px 12px; border-radius: 15px; background: var(--bg-input); }
-        nav a:hover { background: var(--primary); color: black; }
-
         .container { max-width: 650px; margin: 20px auto; padding: 0 15px; }
         section { padding: 20px 0; border-bottom: 1px solid #21262d; }
         .section-title { font-size: 18px; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; border-left: 4px solid var(--secondary); padding-left: 10px; }
         .card { background: var(--bg-card); border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid #30363d; }
-
-        /* Tables & Lists */
         .group-header { background: var(--accent); color: black; padding: 3px 8px; border-radius: 4px; font-weight: bold; display: inline-block; font-size: 11px; margin-bottom: 8px; }
         table { width: 100%; border-collapse: collapse; font-size: 13px; }
         th, td { padding: 10px; text-align: center; border-bottom: 1px solid #30363d; }
         th { background-color: var(--secondary); color: white; }
-
-        /* 🔐 Admin Panel Unique Styling */
-        .admin-list { list-style: none; padding-left: 5px; text-align: left; }
-        .admin-list li { margin: 12px 0; font-size: 14px; display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 8px; background: rgba(255,255,255,0.02); border-radius: 6px; border: 1px solid #222; transition: 0.2s; }
-        .admin-list li:hover { background: var(--bg-input); border-color: var(--primary); color: var(--primary); }
-        .admin-icon { font-size: 16px; }
         
-        .form-control { width: 100%; padding: 10px; background: var(--bg-input); border: 1px solid #30363d; border-radius: 6px; color: white; font-size: 14px; margin-bottom: 10px; }
+        /* Admin Grid & Panels */
+        .admin-list { list-style: none; padding: 0; text-align: left; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .admin-list li { padding: 10px; background: rgba(255,255,255,0.02); border-radius: 6px; border: 1px solid #333; cursor: pointer; font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .admin-list li:hover { border-color: var(--primary); color: var(--primary); }
+        .form-control { width: 100%; padding: 10px; background: var(--bg-input); border: 1px solid #30363d; border-radius: 6px; color: white; font-size: 13px; margin-bottom: 10px; }
         .btn { background: var(--primary); color: #000; padding: 10px; border: none; border-radius: 6px; font-weight: bold; width: 100%; cursor: pointer; }
-        .btn-sec { background: var(--secondary); color: white; }
-
-        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .gallery-item { background: var(--bg-input); aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px dashed #444; }
-        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .social-btn { display: flex; align-items: center; justify-content: center; padding: 10px; border-radius: 6px; text-decoration: none; color: white; font-weight: bold; font-size: 13px; }
-        .fb-btn { background: #1877F2; } .wa-btn { background: #25D366; color: black; }
+        .btn-sec { background: var(--secondary); color: white; margin-top: 10px; }
+        .admin-form-block { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #444; text-align: left; }
     </style>
 </head>
 <body>
 
-    <!-- ১. CLUB LOGO & MENU -->
     <nav>
         <div class="logo-section"><span>⚽</span> JEFC</div>
         <div class="nav-links">
             <a href="#notice">নোটিশ</a>
             <a href="#players">প্লেয়ার্স</a>
-            <a href="#table">টেবিল</a>
+            <a href="#results">রেজাল্ট</a>
             <a href="#admin-sec">🔒 এডমিন</a>
         </div>
     </nav>
 
     <div class="container">
 
-        <!-- ৬. NOTICE BOARD -->
+        <!-- NOTICE BOARD -->
         <section id="notice">
             <h2 class="section-title">📢 নোটিশ বোর্ড (Notice Board)</h2>
-            <div class="card">
-                <p style="font-size:14px;"><strong style="color:red;">[LIVE]</strong> সিজন ১ এর মেইন টুর্নামেন্টের নকআউট পর্বের খেলা চমৎকারভাবে লাইভ চলছে।</p>
-            </div>
+            <div class="card"><p id="live-notice" style="font-size:14px;"><strong style="color:red;">[LIVE]</strong> সিজন ১ এর মেইন টুর্নামেন্টের নকআউট পর্বের খেলা চমৎকারভাবে লাইভ চলছে।</p></div>
         </section>
 
-        <!-- ২ & ৫. QUALIFIED PLAYERS & RANKINGS -->
+        <!-- PLAYERS LIST -->
         <section id="players">
             <h2 class="section-title">⚡ কোয়ালিফাইড প্লেয়ার ও র‍্যাঙ্কিং</h2>
-            <div class="card">
-                <div class="group-header">গ্রুপ সি (Rankings)</div>
-                <!-- Line 81: To update Player name edit text below -->
-                <p>🥇 #1 Md Ratul — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
-                <p style="color:var(--text-muted); margin-top:4px;">🥈 #2 Mohasin — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
+            <div class="card" id="player-list-container">
+                <div class="group-header">গ্রুপ পর্ব কোয়ালিফাইড (Live List)</div>
+                <p id="p1">🥇 #1 Md Ratul — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
+                <p id="p2" style="margin-top:4px;">🥈 #2 Mohasin — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
             </div>
         </section>
 
-        <!-- ৩. TOURNAMENT TABLE -->
-        <section id="table">
-            <h2 class="section-title">🏆 টুর্নামেন্ট টেবিল (Tournament Table)</h2>
-            <div class="card" style="padding:5px; overflow-x:auto;">
-                <table>
-                    <thead><tr><th>Rank</th><th>Player Name</th><th>Match</th><th>Points</th></tr></thead>
-                    <tbody>
-                        <!-- Line 95: Edit Table stats below -->
-                        <tr><td>1</td><td>Md Ratul</td><td>3</td><td>9</td></tr>
-                        <tr><td>2</td><td>Rumman sikhon</td><td>3</td><td>7</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- ৪. MATCH RESULTS -->
+        <!-- MATCH RESULTS -->
         <section id="results">
             <h2 class="section-title">⚽ ম্যাচ রেজাল্ট (Match Results)</h2>
             <div class="card" style="padding:5px; overflow-x:auto;">
-                <table>
+                <table id="results-table">
                     <thead><tr><th>ম্যাচ (Match)</th><th>স্কোর (Score)</th><th>বিজেতা (Winner)</th></tr></thead>
-                    <tbody>
-                        <!-- Line 110: Edit Live Score below -->
-                        <tr><td>Ratul vs Mohasin</td><td style="color:var(--accent);">3 - 1</td><td>Md Ratul</td></tr>
-                    </tbody>
+                    <tbody><tr><td>Ratul vs Mohasin</td><td style="color:var(--accent);">3 - 1</td><td>Md Ratul</td></tr></tbody>
                 </table>
             </div>
         </section>
 
-        <!-- 🔒 ৮. ADMIN PANEL SECTION WITH LOGIN SYSTEM -->
+        <!-- 🔒 ADMIN PANEL SECTION -->
         <section id="admin-sec">
-            <h2 class="section-title">🔒 এডমিন প্যানেল (Admin Panel)</h2>
+            <h2 class="section-title">🔒 Admin Panel (এডমিন প্যানেল)</h2>
             
-            <!-- Login Form Card -->
+            <!-- Login Form -->
             <div class="card" id="login-card">
-                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; text-align: left;">এডমিন অপশনগুলো আনলক করতে সিক্রেট পাসওয়ার্ড দিন:</p>
-                <input type="password" id="admin-pass" class="form-control" placeholder="Enter Admin Password">
+                <input type="password" id="admin-pass" class="form-control" placeholder="পাসওয়ার্ড দিন (Default: 1234)">
                 <button class="btn" onclick="checkAdminLogin()">Admin Login</button>
-                <p id="login-error" style="color: red; font-size: 12px; margin-top: 8px; display: none;">ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।</p>
             </div>
 
-            <!-- Unlocked Admin Options List -->
+            <!-- Unlocked Admin Controls -->
             <div class="card" id="options-card" style="display: none; border-color: var(--primary);">
-                <p style="font-size: 13px; color: var(--primary); font-weight: bold; margin-bottom: 10px; text-align: left;">🔓 Admin Panel Unlocked Successfully!</p>
                 <ul class="admin-list">
-                    <li onclick="showGuide('প্লেয়ার যুক্ত করতে গิตহাব এডিটরে গিয়ে ৮১ নম্বর লাইনের নিচে নতুন নাম লিখে Commit করুন।')"><span class="admin-icon">➕</span> Add Player</li>
-                    <li onclick="showGuide('প্লেয়ার এডিট করতে গিটহাব এডিটরে ৮১ থেকে ৮৫ নম্বর লাইনের টেক্সটগুলো এডিট করুন।')"><span class="admin-icon">✏️</span> Edit Player</li>
-                    <li onclick="showGuide('প্লেয়ার ডিলিট করতে গিটহাব এডিটরে নির্দিষ্ট প্লেয়ারের লাইনের লেখাগুলো মুছে দিন।')"><span class="admin-icon">❌</span> Delete Player</li>
-                    <li onclick="showGuide('ম্যাচ রেজাল্ট যোগ করতে গিটহাব এডিটরে ১১০ নম্বর লাইনের নিচে নতুন ট্রাঙ্ক (tr) বসান।')"><span class="admin-icon">🏆</span> Add Results</li>
-                    <li onclick="showGuide('রেজাল্ট এডিট করতে গিটহাবে গিয়ে ১১১ নম্বর লাইনের স্কোর ও নাম পরিবর্তন করুন।')"><span class="admin-icon">⚙️</span> Edit Results</li>
-                    <li onclick="showGuide('নোটিশ পরিবর্তন করতে গিটহাব এডিটরে ৭০ নম্বর লাইনের টেক্সটটি এডিট করুন।')"><span class="admin-icon">📢</span> Add Notices</li>
-                    <li onclick="showGuide('নতুন ছবি আপলোড করতে আপনার গিটহাব রেপোজিটরিতে সরাসরি ইমেজ ফাইল আপলোড করুন।')"><span class="admin-icon">🖼️</span> Upload Images</li>
-                    <li onclick="showGuide('নতুন রিকোয়েস্ট অ্যাপ্রুভ বা রিজেক্ট করতে আপনার গিটহাবের index.html ফাইলটি মেইনটেইন করুন।')"><span class="admin-icon">✅</span> Approve Players</li>
-                    <li onclick="showGuide('রিকোয়েস্ট রিজেক্ট করার জন্য এই অপশনটি গিটহাব ম্যানুয়াল এডিটের মাধ্যমে নিয়ন্ত্রিত হয়।')"><span class="admin-icon">🚫</span> Reject Requests</li>
+                    <li onclick="openAdminForm('add-player-form')">➕ Add Player</li>
+                    <li onclick="alert('প্লেয়ার এডিট করতে নিচে তালিকায় থাকা প্লেয়ারের নামের ওপর সরাসরি টাচ করুন।')">✏️ Edit Player</li>
+                    <li onclick="openAdminForm('delete-player-form')">❌ Delete Player</li>
+                    <li onclick="openAdminForm('add-result-form')">🏆 Add Results</li>
+                    <li onclick="openAdminForm('add-notice-form')">📢 Add Notices</li>
+                    <li onclick="alert('ইমেজ আপলোড ফিচারটির জন্য গিটহাবে ফাইল আপলোড করতে হবে।')">🖼️ Upload Images</li>
                 </ul>
-                <button class="btn btn-sec" style="margin-top: 10px;" onclick="adminLogout()">Admin Logout</button>
+
+                <!-- Add Player Form -->
+                <div id="add-player-form" class="admin-form-block">
+                    <h4 style="color:var(--primary); margin-bottom:8px;">Add New Player</h4>
+                    <input type="text" id="new-p-name" class="form-control" placeholder="Player Name">
+                    <button class="btn" onclick="executeAddPlayer()">জমা দিন</button>
+                </div>
+
+                <!-- Delete Player Form -->
+                <div id="delete-player-form" class="admin-form-block">
+                    <h4 style="color:red; margin-bottom:8px;">Delete Player</h4>
+                    <input type="text" id="del-p-id" class="form-control" placeholder="প্লেয়ারের নাম লিখুন">
+                    <button class="btn" style="background:red; color:white;" onclick="executeDeletePlayer()">মুছে ফেলুন</button>
+                </div>
+
+                <!-- Add Result Form -->
+                <div id="add-result-form" class="admin-form-block">
+                    <h4 style="color:var(--accent); margin-bottom:8px;">Add Match Result</h4>
+                    <input type="text" id="m-teams" class="form-control" placeholder="যেমন: Ratul vs Nasim">
+                    <input type="text" id="m-score" class="form-control" placeholder="যেমন: 2 - 1">
+                    <input type="text" id="m-winner" class="form-control" placeholder="বিজেতার নাম">
+                    <button class="btn" onclick="executeAddResult()">রেজাল্ট আপডেট করুন</button>
+                </div>
+
+                <!-- Add Notice Form -->
+                <div id="add-notice-form" class="admin-form-block">
+                    <h4 style="color:var(--primary); margin-bottom:8px;">Update Notice Board</h4>
+                    <input type="text" id="new-notice-txt" class="form-control" placeholder="নতুন নোটিশটি লিখুন">
+                    <button class="btn" onclick="executeAddNotice()">নোটিশ পাবলিশ করুন</button>
+                </div>
+
+                <button class="btn btn-sec" onclick="adminLogout()">Admin Logout</button>
             </div>
         </section>
 
-        <!-- ৯. GALLERY -->
-        <section id="gallery">
-            <h2 class="section-title">🖼️ গ্যালারি (Gallery)</h2>
+    </div>
+
+    <script>
+        function checkAdminLogin() {
+            if(document.getElementById('admin-pass').value === "1234") {
+                document.getElementById('login-card').style.display = 'none';
+                document.getElementById('options-card').style.display = 'block';
+            } else { alert('ভুল পাসওয়ার্ড!'); }
+        }
+        function adminLogout() {
+            document.getElementById('login-card').style.display = 'block';
+            document.getElementById('options-card').style.display = 'none';
+            closeAllAdminForms();
+        }
+        function openAdminForm(formId) {
+            closeAllAdminForms();
+            document.getElementById(formId).style.display = 'block';
+        }
+        function closeAllAdminForms() {
+            var forms = document.getElementsByClassName('admin-form-block');
+            for(var i=0; i<forms.length; i++) { forms[i].style.display = 'none'; }
+        }
+        function executeAddPlayer() {
+            var name = document.getElementById('new-p-name').value;
+            if(name) {
+                var container = document.getElementById('player-list-container');
+                var p = document.createElement('p');
+                p.style.marginTop = "4px";
+                p.innerHTML = "🏃 " + name + " — <span style='color:var(--primary);'>কোয়ালিফাইড</span>";
+                container.appendChild(p);
+                document.getElementById('new-p-name').value = '';
+                alert('প্লেয়ার সফলভাবে তালিকায় যুক্ত হয়েছে!');
+            }
