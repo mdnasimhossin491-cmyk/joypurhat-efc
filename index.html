@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joypurhat eFootball Club | Top 10 Features</title>
+    <title>Joypurhat eFootball Club | Admin Enabled</title>
     <style>
         :root {
             --bg-dark: #0b0e14;
@@ -31,7 +31,7 @@
             padding-bottom: 60px;
         }
 
-        /* 1. Club Logo & Menu Bar */
+        /* Nav Bar & Logo */
         nav {
             background: rgba(22, 27, 34, 0.95);
             position: sticky;
@@ -44,220 +44,81 @@
             justify-content: space-between;
         }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: bold;
-            color: var(--primary);
-        }
+        .logo-section { display: flex; align-items: center; gap: 8px; font-weight: bold; color: var(--primary); }
+        .nav-links { display: flex; gap: 10px; overflow-x: auto; white-space: nowrap; }
+        nav a { color: var(--text-main); text-decoration: none; font-size: 12px; font-weight: bold; padding: 5px 12px; border-radius: 15px; background: var(--bg-input); }
+        nav a:hover { background: var(--primary); color: black; }
 
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            white-space: nowrap;
-            max-width: 70%;
-        }
+        .container { max-width: 650px; margin: 20px auto; padding: 0 15px; }
+        section { padding: 20px 0; border-bottom: 1px solid #21262d; }
+        .section-title { font-size: 18px; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; border-left: 4px solid var(--secondary); padding-left: 10px; }
+        .card { background: var(--bg-card); border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid #30363d; }
 
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 15px;
-            background: var(--bg-input);
-        }
+        /* Tables & Lists */
+        .group-header { background: var(--accent); color: black; padding: 3px 8px; border-radius: 4px; font-weight: bold; display: inline-block; font-size: 11px; margin-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 10px; text-align: center; border-bottom: 1px solid #30363d; }
+        th { background-color: var(--secondary); color: white; }
 
-        .container {
-            max-width: 650px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
+        /* 🔐 Admin Panel Unique Styling */
+        .admin-list { list-style: none; padding-left: 5px; text-align: left; }
+        .admin-list li { margin: 12px 0; font-size: 14px; display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 8px; background: rgba(255,255,255,0.02); border-radius: 6px; border: 1px solid #222; transition: 0.2s; }
+        .admin-list li:hover { background: var(--bg-input); border-color: var(--primary); color: var(--primary); }
+        .admin-icon { font-size: 16px; }
+        
+        .form-control { width: 100%; padding: 10px; background: var(--bg-input); border: 1px solid #30363d; border-radius: 6px; color: white; font-size: 14px; margin-bottom: 10px; }
+        .btn { background: var(--primary); color: #000; padding: 10px; border: none; border-radius: 6px; font-weight: bold; width: 100%; cursor: pointer; }
+        .btn-sec { background: var(--secondary); color: white; }
 
-        section {
-            padding: 20px 0;
-            border-bottom: 1px solid #21262d;
-        }
-
-        .section-title {
-            font-size: 18px;
-            color: var(--primary);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            border-left: 4px solid var(--secondary);
-            padding-left: 10px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 1px solid #30363d;
-        }
-
-        /* 2. Qualified Players */
-        .group-header {
-            background: var(--accent);
-            color: black;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            display: inline-block;
-            font-size: 11px;
-            margin-bottom: 8px;
-        }
-
-        /* 3 & 4. Tables for Tournament Table & Match Results */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #30363d;
-        }
-
-        th {
-            background-color: var(--secondary);
-            color: white;
-        }
-
-        /* 7. Registration Form Controls */
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            margin-bottom: 5px;
-            color: var(--text-muted);
-            text-align: left;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            background: var(--bg-input);
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: white;
-            font-size: 13px;
-        }
-
-        .btn {
-            background: var(--primary);
-            color: #000;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        /* 9. Gallery Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-        }
-
-        .gallery-item {
-            background: var(--bg-input);
-            aspect-ratio: 1;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            border: 1px dashed #444;
-        }
-
-        /* 10. Social Media Grid */
-        .social-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            border-radius: 6px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
-        .fb-btn { background: #1877F2; }
-        .wa-btn { background: #25D366; color: black; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .gallery-item { background: var(--bg-input); aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px dashed #444; }
+        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .social-btn { display: flex; align-items: center; justify-content: center; padding: 10px; border-radius: 6px; text-decoration: none; color: white; font-weight: bold; font-size: 13px; }
+        .fb-btn { background: #1877F2; } .wa-btn { background: #25D366; color: black; }
     </style>
 </head>
 <body>
 
-    <!-- 1. CLUB LOGO & NAVIGATION MENU -->
+    <!-- ১. CLUB LOGO & MENU -->
     <nav>
-        <div class="logo-section">
-            <span>⚽</span> JEFC
-        </div>
+        <div class="logo-section"><span>⚽</span> JEFC</div>
         <div class="nav-links">
             <a href="#notice">নোটিশ</a>
             <a href="#players">প্লেয়ার্স</a>
             <a href="#table">টেবিল</a>
-            <a href="#results">রেজাল্ট</a>
-            <a href="#reg">রেজিস্ট্রেশন</a>
+            <a href="#admin-sec">🔒 এডমিন</a>
         </div>
     </nav>
 
     <div class="container">
 
-        <!-- 6. NOTICE BOARD SECTION -->
+        <!-- ৬. NOTICE BOARD -->
         <section id="notice">
-            <h2 class="section-title">📢 ৬. নোটিশ বোর্ড (Notice Board)</h2>
+            <h2 class="section-title">📢 নোটিশ বোর্ড (Notice Board)</h2>
             <div class="card">
-                <p style="font-size:14px;"><strong style="color:red;">[LIVE]</strong> সিজন ১ এর মেইন টুর্নামেন্টের নকআউট পর্বের সময়সূচী নিচে দেওয়া হলো।</p>
+                <p style="font-size:14px;"><strong style="color:red;">[LIVE]</strong> সিজন ১ এর মেইন টুর্নামেন্টের নকআউট পর্বের খেলা চমৎকারভাবে লাইভ চলছে।</p>
             </div>
         </section>
 
-        <!-- 2 & 5. QUALIFIED PLAYERS & RANKINGS -->
+        <!-- ২ & ৫. QUALIFIED PLAYERS & RANKINGS -->
         <section id="players">
-            <h2 class="section-title">⚡ ২ & ৫. কোয়ালিফাইড প্লেয়ার ও র‍্যাঙ্কিং</h2>
+            <h2 class="section-title">⚡ কোয়ালিফাইড প্লেয়ার ও র‍্যাঙ্কিং</h2>
             <div class="card">
                 <div class="group-header">গ্রুপ সি (Rankings)</div>
+                <!-- Line 81: To update Player name edit text below -->
                 <p>🥇 #1 Md Ratul — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
                 <p style="color:var(--text-muted); margin-top:4px;">🥈 #2 Mohasin — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
             </div>
-            <div class="card">
-                <div class="group-header">গ্রুপ ডি (Rankings)</div>
-                <p>🥇 #1 Rumman sikhon — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
-                <p style="color:var(--text-muted); margin-top:4px;">🥈 #2 Foysal Fahim — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
-            </div>
         </section>
 
-        <!-- 3. TOURNAMENT TABLE SECTION -->
+        <!-- ৩. TOURNAMENT TABLE -->
         <section id="table">
-            <h2 class="section-title">🏆 ৩. টুর্নামেন্ট টেবিল (Tournament Table)</h2>
+            <h2 class="section-title">🏆 টুর্নামেন্ট টেবিল (Tournament Table)</h2>
             <div class="card" style="padding:5px; overflow-x:auto;">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Player Name</th>
-                            <th>Match</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Rank</th><th>Player Name</th><th>Match</th><th>Points</th></tr></thead>
                     <tbody>
+                        <!-- Line 95: Edit Table stats below -->
                         <tr><td>1</td><td>Md Ratul</td><td>3</td><td>9</td></tr>
                         <tr><td>2</td><td>Rumman sikhon</td><td>3</td><td>7</td></tr>
                     </tbody>
@@ -265,45 +126,50 @@
             </div>
         </section>
 
-        <!-- 4. MATCH RESULTS SECTION -->
+        <!-- ৪. MATCH RESULTS -->
         <section id="results">
-            <h2 class="section-title">⚽ ৪. ম্যাচ রেজাল্ট (Match Results)</h2>
+            <h2 class="section-title">⚽ ম্যাচ রেজাল্ট (Match Results)</h2>
             <div class="card" style="padding:5px; overflow-x:auto;">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>ম্যাচ (Match)</th>
-                            <th>স্কোর (Score)</th>
-                            <th>বিজেতা (Winner)</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>ম্যাচ (Match)</th><th>স্কোর (Score)</th><th>বিজেতা (Winner)</th></tr></thead>
                     <tbody>
+                        <!-- Line 110: Edit Live Score below -->
                         <tr><td>Ratul vs Mohasin</td><td style="color:var(--accent);">3 - 1</td><td>Md Ratul</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- 7. REGISTRATION FORM SECTION -->
-        <section id="reg">
-            <h2 class="section-title">📝 ৭. রেজিস্ট্রেশন ফর্ম (Registration Form)</h2>
-            <div class="card">
-                <form onsubmit="event.preventDefault(); alert('ধন্যবাদ! আপনার ডেটা ডেমো হিসেবে জমা হয়েছে।');">
-                    <div class="form-group">
-                        <label>প্লেয়ারের নাম (Player Name)</label>
-                        <input type="text" placeholder="যেমন: Md Nasim" required>
-                    </div>
-                    <div class="form-group">
-                        <label>ই-ফুটবল আইডি (eFootball ID)</label>
-                        <input type="text" placeholder="যেমন: 123-456-789" required>
-                    </div>
-                    <button type="submit" class="btn">আবেদন জমা দিন</button>
-                </form>
+        <!-- 🔒 ৮. ADMIN PANEL SECTION WITH LOGIN SYSTEM -->
+        <section id="admin-sec">
+            <h2 class="section-title">🔒 এডমিন প্যানেল (Admin Panel)</h2>
+            
+            <!-- Login Form Card -->
+            <div class="card" id="login-card">
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; text-align: left;">এডমিন অপশনগুলো আনলক করতে সিক্রেট পাসওয়ার্ড দিন:</p>
+                <input type="password" id="admin-pass" class="form-control" placeholder="Enter Admin Password">
+                <button class="btn" onclick="checkAdminLogin()">Admin Login</button>
+                <p id="login-error" style="color: red; font-size: 12px; margin-top: 8px; display: none;">ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।</p>
+            </div>
+
+            <!-- Unlocked Admin Options List -->
+            <div class="card" id="options-card" style="display: none; border-color: var(--primary);">
+                <p style="font-size: 13px; color: var(--primary); font-weight: bold; margin-bottom: 10px; text-align: left;">🔓 Admin Panel Unlocked Successfully!</p>
+                <ul class="admin-list">
+                    <li onclick="showGuide('প্লেয়ার যুক্ত করতে গิตহাব এডিটরে গিয়ে ৮১ নম্বর লাইনের নিচে নতুন নাম লিখে Commit করুন।')"><span class="admin-icon">➕</span> Add Player</li>
+                    <li onclick="showGuide('প্লেয়ার এডিট করতে গিটহাব এডিটরে ৮১ থেকে ৮৫ নম্বর লাইনের টেক্সটগুলো এডিট করুন।')"><span class="admin-icon">✏️</span> Edit Player</li>
+                    <li onclick="showGuide('প্লেয়ার ডিলিট করতে গিটহাব এডিটরে নির্দিষ্ট প্লেয়ারের লাইনের লেখাগুলো মুছে দিন।')"><span class="admin-icon">❌</span> Delete Player</li>
+                    <li onclick="showGuide('ম্যাচ রেজাল্ট যোগ করতে গিটহাব এডিটরে ১১০ নম্বর লাইনের নিচে নতুন ট্রাঙ্ক (tr) বসান।')"><span class="admin-icon">🏆</span> Add Results</li>
+                    <li onclick="showGuide('রেজাল্ট এডিট করতে গিটহাবে গিয়ে ১১১ নম্বর লাইনের স্কোর ও নাম পরিবর্তন করুন।')"><span class="admin-icon">⚙️</span> Edit Results</li>
+                    <li onclick="showGuide('নোটিশ পরিবর্তন করতে গিটহাব এডিটরে ৭০ নম্বর লাইনের টেক্সটটি এডিট করুন।')"><span class="admin-icon">📢</span> Add Notices</li>
+                    <li onclick="showGuide('নতুন ছবি আপলোড করতে আপনার গিটহাব রেপোজিটরিতে সরাসরি ইমেজ ফাইল আপলোড করুন।')"><span class="admin-icon">🖼️</span> Upload Images</li>
+                    <li onclick="showGuide('নতুন রিকোয়েস্ট অ্যাপ্রুভ বা রিজেক্ট করতে আপনার গিটহাবের index.html ফাইলটি মেইনটেইন করুন।')"><span class="admin-icon">✅</span> Approve Players</li>
+                    <li onclick="showGuide('রিকোয়েস্ট রিজেক্ট করার জন্য এই অপশনটি গিটহাব ম্যানুয়াল এডিটের মাধ্যমে নিয়ন্ত্রিত হয়।')"><span class="admin-icon">🚫</span> Reject Requests</li>
+                </ul>
+                <button class="btn btn-sec" style="margin-top: 10px;" onclick="adminLogout()">Admin Logout</button>
             </div>
         </section>
 
-        <!-- 8. ADMIN PANEL SECTION -->
-        <section id="admin">
-            <h2 class="section-title">🔒 ৮. এডমিন প্যানেল (Admin Panel)</h2>
-            <div class="card">
-                <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">[ম্যানুয়াল গাইড] ওয়েবসাইট আপডেট করতে আপনার গিটহাব অ্যাকাউন্টে লগইন করে index.html ফাইলটি এডিট করুন।</p>
+        <!-- ৯. GALLERY -->
+        <section id="gallery">
+            <h2 class="section-title">🖼️ গ্যালারি (Gallery)</h2>
