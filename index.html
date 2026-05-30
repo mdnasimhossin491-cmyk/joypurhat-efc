@@ -1,38 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joypurhat eFootball Club</title>
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
 background:#0d1117;
 color:white;
-font-family:Arial;
-text-align:center;
-margin:0;
-padding:0;
 }
+
 header{
+background:linear-gradient(90deg,#0066ff,#00c3ff);
+padding:30px;
+text-align:center;
+}
+
+header h1{
+font-size:32px;
+}
+
+nav{
 background:#161b22;
-padding:20px;
+padding:15px;
+text-align:center;
 }
-h1{
-color:#00ff88;
+
+nav a{
+color:white;
+text-decoration:none;
+margin:15px;
+font-weight:bold;
 }
-section{
-padding:20px;
+
+.section{
+padding:40px 20px;
+text-align:center;
 }
+
 .card{
 background:#161b22;
-margin:15px;
-padding:15px;
-border-radius:12px;
+padding:20px;
+margin:15px auto;
+max-width:700px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,255,255,0.2);
 }
-button{
+
+.player{
+background:#21262d;
+margin:10px;
+padding:10px;
+border-radius:10px;
+}
+
+.btn{
+display:inline-block;
 background:#00ff88;
-border:none;
-padding:10px 20px;
+color:black;
+padding:12px 25px;
+text-decoration:none;
 border-radius:8px;
 font-weight:bold;
+margin-top:15px;
+}
+
+footer{
+background:#161b22;
+text-align:center;
+padding:20px;
+margin-top:30px;
 }
 </style>
 </head>
@@ -40,35 +85,57 @@ font-weight:bold;
 <body>
 
 <header>
-<h1>🏆 Joypurhat eFootball Club ⚽</h1>
-<p>Official Website</p>
+<h1>🏆 JOYPURHAT eFOOTBALL CLUB ⚽</h1>
+<p>Official Club Website</p>
 </header>
 
-<section>
+<nav>
+<a href="#about">About</a>
+<a href="#players">Players</a>
+<a href="#tournament">Tournament</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<section class="section" id="about">
 <div class="card">
-<h2>About Club</h2>
-<p>Welcome to Joypurhat eFootball Club.</p>
+<h2>About Our Club</h2>
+<p>
+Welcome to Joypurhat eFootball Club.
+We organize competitive eFootball tournaments and build a strong gaming community.
+</p>
 </div>
-
-<div class="card">
-<h2>Qualified Players</h2>
-<p>👑 md mahady</p>
-<p>🏅 মুহাইমিন আবির</p>
-</div>
-
-<div class="card">
-<h2>Tournaments</h2>
-<p>Season 1 Main Tournament</p>
-</div>
-
-<div class="card">
-<h2>Contact</h2>
-<p>Facebook Page Coming Soon</p>
-</div>
-
-<button>Join Club</button>
-
 </section>
+
+<section class="section" id="players">
+<div class="card">
+<h2>🏅 Qualified Players</h2>
+
+<div class="player">👑 MD Mahady</div>
+<div class="player">🏅 মুহাইমিন আবির</div>
+
+</div>
+</section>
+
+<section class="section" id="tournament">
+<div class="card">
+<h2>🔥 Season 1 Tournament</h2>
+<p>Main Tournament Running</p>
+<a class="btn" href="#">View Fixtures</a>
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="card">
+<h2>📞 Contact</h2>
+<p>Joypurhat eFootball Club</p>
+<p>Bangladesh</p>
+<a class="btn" href="#">Join Our Club</a>
+</div>
+</section>
+
+<footer>
+© 2026 Joypurhat eFootball Club | All Rights Reserved
+</footer>
 
 </body>
 </html>
