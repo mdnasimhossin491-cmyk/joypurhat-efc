@@ -3,222 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joypurhat eFootball Club</title>
+    <title>Joypurhat eFootball Club | Official</title>
     <style>
+        :root {
+            --bg-dark: #0b0e14;
+            --bg-card: #161b22;
+            --bg-input: #1f293d;
+            --primary: #00ff88;
+            --secondary: #0052cc;
+            --accent: #ff9900;
+            --text-main: #ffffff;
+            --text-muted: #8b949e;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
+
         body {
-            background-color: #0d1117;
-            color: white;
-            text-align: center;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             background: linear-gradient(135deg, #0b0e14 0%, #1a2333 100%);
             padding-bottom: 50px;
+            text-align: center;
         }
-        header {
+
+        /* 🏙️ Club Logo & Club Banner */
+        .banner {
             background: linear-gradient(90deg, #161b22 0%, #0052cc 100%);
-            padding: 25px 20px;
-            border-bottom: 4px solid #00ff88;
+            padding: 40px 20px;
+            border-bottom: 4px solid var(--primary);
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        header h1 {
-            color: #00ff88;
-            font-size: 26px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+        .club-logo { font-size: 55px; margin-bottom: 8px; }
+        .banner h1 { color: var(--primary); font-size: 28px; text-transform: uppercase; letter-spacing: 2px; }
+        
+        /* 🏷️ Club Motto */
+        .banner .motto { color: var(--accent); font-size: 14px; font-weight: bold; margin-top: 6px; font-style: italic; }
+        
+        .container { max-width: 650px; margin: 30px auto; padding: 0 15px; }
+        
+        .card { 
+            background: var(--bg-card); 
+            border-radius: 14px; 
+            padding: 20px; 
+            margin-bottom: 25px; 
+            border: 1px solid #30363d; 
+            text-align: left; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        header p {
-            color: #8b949e;
-            font-size: 14px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-        .status-card {
-            background: #161b22;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #30363d;
-            margin-bottom: 25px;
-        }
-        .status-card h2 {
-            color: #ff9900;
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-        .status-card p {
-            color: #c9d1d9;
-            font-size: 15px;
-            margin: 4px 0;
-        }
-        .section-title {
-            color: #00ff88;
-            font-size: 22px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .group-card {
-            background: #1f293d;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-left: 5px solid #0052cc;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            text-align: left;
-        }
-        .group-name {
-            background: #ff9900;
-            color: #000;
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-        .player {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 8px 0;
-            font-size: 15px;
-            background: rgba(255,255,255,0.05);
-            padding: 10px 12px;
-            border-radius: 6px;
-        }
-        .player-name {
-            font-weight: bold;
-        }
-        .qualify-tag {
-            color: #00ff88;
-            font-size: 12px;
-            background: rgba(0, 255, 136, 0.1);
-            padding: 2px 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-        }
-        .special-group {
-            border-left: 5px solid #ff9900;
-            background: #2d2219;
-        }
+        .card-title { color: var(--primary); font-size: 19px; margin-bottom: 12px; text-transform: uppercase; border-left: 4px solid var(--secondary); padding-left: 10px; }
+        
+        /* ⏳ Countdown Timer */
+        .timer-grid { display: flex; gap: 10px; margin-top: 12px; }
+        .timer-box { background: var(--bg-input); padding: 12px; border-radius: 8px; flex: 1; text-align: center; border: 1px solid #3d4452; }
+        .timer-num { font-size: 22px; font-weight: bold; color: var(--accent); }
+        .timer-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+        /* 👥 Players Section Elements */
+        .group-header { background: var(--accent); color: #000; display: inline-block; padding: 4px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; margin-bottom: 15px; }
+        .player-profile { background: var(--bg-input); border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid #30363d; }
+        .player-meta { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
+        
+        /* 👤 Player Photo (Emoji) */
+        .player-photo { font-size: 32px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border: 1px solid #444; }
+        
+        /* 📝 Player Name, ID, Position, Rank */
+        .player-details h4 { font-size: 17px; color: #fff; font-weight: bold; }
+        .player-details p { font-size: 13px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
+        
+        /* 📊 Player Statistics (Wins, Draws, Losses, Goals, Assists) */
+        .stats-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; text-align: center; }
+        .stats-table th { background: #11161d; color: var(--primary); font-weight: bold; padding: 8px; border: 1px solid #30363d; }
+        .stats-table td { padding: 8px; border: 1px solid #30363d; color: #fff; font-weight: 500; }
+        
+        .qualify-txt { color: var(--primary); font-size: 12px; font-weight: bold; display: block; margin-top: 10px; text-align: right; }
+        
+        /* 👁️ Visitor Counter */
+        .visitor-counter { font-size: 14px; color: var(--text-muted); text-align: center; margin-top: 30px; background: var(--bg-card); padding: 12px; border-radius: 8px; border: 1px solid #30363d; }
     </style>
 </head>
 <body>
 
-    <header>
+    <!-- 🏙️ CLUB LOGO & CLUB BANNER -->
+    <div class="banner">
+        <div class="club-logo">⚽</div> 
         <h1>Joypurhat eFootball Club</h1>
-        <p>Official Website | Season 1</p>
-    </header>
+        <!-- 🏷️ CLUB MOTTO -->
+        <p class="motto">"নৈপুণ্য আর লড়াইয়ে আমরাই সেরা" (Club Motto)</p>
+    </div>
 
     <div class="container">
         
-        <div class="status-card">
-            <h2>🏆 Main Tournament Running 🏆</h2>
-            <p>Top players from each group qualified.</p>
-            <p><strong>Total Qualified Players:</strong> 14 Players</p>
+        <!-- 👋 WELCOME MESSAGE -->
+        <div class="card">
+            <h3 class="card-title">👋 স্বাগতম (Welcome Message)</h3>
+            <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">জয়পুরহাট ই-ফুটবল ক্লাবের অফিশিয়াল ওয়েবসাইটে আপনাকে স্বাগতম। আমাদের ক্লাবের সিজন ১ এর মেইন টুর্নামেন্ট ডাটা এবং সেরা প্লেয়ারদের রেকর্ড দেখতে নিচে স্ক্রল করুন।</p>
         </div>
 
-        <h3 class="section-title">⚡ QUALIFIED PLAYERS LIST ⚡</h3>
-
-        <!-- Group C -->
-        <div class="group-card">
-            <div class="group-name">গ্রুপ সি (Group C)</div>
-            <div class="player">
-                <span class="player-name">Md Ratul</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
-            <div class="player">
-                <span class="player-name">Mohasin</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
+        <!-- 📢 LATEST NEWS -->
+        <div class="card">
+            <h3 class="card-title">📢 সর্বশেষ খবর (Latest News)</h3>
+            <p style="font-size: 14px; line-height: 1.5;">🔥 অত্যন্ত আনন্দের সাথে জানানো যাচ্ছে যে, সিজন ১ এর মেইন নকআউট পর্বের জন্য আমাদের সেরা খেলোয়াড়রা সম্পূর্ণ প্রস্তুত! নিয়মিত লাইভ স্কোর ও ম্যাচ আপডেট পেতে আমাদের পেজে চোখ রাখুন।</p>
         </div>
 
-        <!-- Group D -->
-        <div class="group-card">
-            <div class="group-name">গ্রুপ ডি (Group D)</div>
-            <div class="player">
-                <span class="player-name">Rumman sikhon</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
-            <div class="player">
-                <span class="player-name">Foysal Fahim</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
+        <!-- 🏆 RUNNING TOURNAMENT -->
+        <div class="card">
+            <h3 class="card-title">🏆 রানিং টুর্নামেন্ট (Running Tournament)</h3>
+            <p style="font-size: 14px;"><strong>Tournament Name:</strong> Season 1 Main Stage</p>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;"><strong>Status:</strong> গ্রুপ পর্ব শেষ, বর্তমানে মূল পর্ব চলমান রয়েছে।</p>
+        </div>
+
+        <!-- ⏳ COUNTDOWN TIMER -->
+        <div class="card">
+            <h3 class="card-title">⏳ পরবর্তী ম্যাচ (Countdown Timer)</h3>
+            <p style="font-size: 13px; color: var(--text-muted);">পরবর্তী হাই-ভোল্টেজ ম্যাচ শুরু হতে বাকি:</p>
+            <div class="timer-grid">
+                <div class="timer-box"><div class="timer-num">০২</div><div class="timer-lbl">দিন</div></div>
+                <div class="timer-box"><div class="timer-num">০৬</div><div class="timer-lbl">ঘণ্টা</div></div>
+                <div class="timer-box"><div class="timer-num">১৫</div><div class="timer-lbl">মিনিট</div></div>
             </div>
         </div>
 
-        <!-- Group E -->
-        <div class="group-card">
-            <div class="group-name">গ্রুপ ই (Group E)</div>
-            <div class="player">
-                <span class="player-name">md mahady</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
+        <!-- 👥 PLAYERS SECTION (NAME, PHOTO, ID, POSITION, RANK, STATS) -->
+        <div class="card">
+            <h3 class="card-title">👥 প্লেয়ার্স সেকশন (Players Section)</h3>
+            
+            <!-- Group C -->
+            <div class="group-header">গ্রুপ সি (Group C)</div>
+            
+            <!-- Player 1 Profile -->
+            <div class="player-profile">
+                <div class="player-meta">
+                    <div class="player-photo">👤</div> <!-- Player Photo -->
+                    <div class="player-details">
+                        <h4>Md Ratul</h4> <!-- Player Name -->
+                        <p><strong>Rank:</strong> #1 | <strong>Position:</strong> CF (Forward)</p> <!-- Rank & Position -->
+                        <p><strong>eFootball ID:</strong> 452-987-123</p> <!-- eFootball ID -->
+                    </div>
+                </div>
+                <!-- Player Statistics (Goals, Assists, Wins, Draws, Losses) -->
+                <table class="stats-table">
+                    <thead>
+                        <tr><th>Wins</th><th>Draws</th><th>Losses</th><th>Goals</th><th>Assists</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>5</td><td>2</td><td>1</td><td>12</td><td>4</td></tr>
+                    </tbody>
+                </table>
+                <span class="qualify-txt">✓ সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
             </div>
-            <div class="player">
-                <span class="player-name">মুহাইমিন আবির</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
-        </div>
 
-        <!-- Group F -->
-        <div class="group-card">
-            <div class="group-name">গ্রুপ এফ (Group F)</div>
-            <div class="player">
-                <span class="player-name">JS SAJJAD</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
+            <!-- Player 2 Profile -->
+            <div class="player-profile">
+                <div class="player-meta">
+                    <div class="player-photo">👤</div>
+                    <div class="player-details">
+                        <h4>Mohasin</h4>
+                        <p><strong>Rank:</strong> #2 | <strong>Position:</strong> AMF (Midfielder)</p>
+                        <p><strong>eFootball ID:</strong> 784-123-654</p>
+                    </div>
+                </div>
+                <table class="stats-table">
+                    <thead>
+                        <tr><th>Wins</th><th>Draws</th><th>Losses</th><th>Goals</th><th>Assists</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>4</td><td>2</td><td>2</td><td>9</td><td>6</td></tr>
+                    </tbody>
+                </table>
+                <span class="qualify-txt">✓ সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
             </div>
-            <div class="player">
-                <span class="player-name">SAFI AHMED</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
-        </div>
 
-        <!-- Group H -->
-        <div class="group-card">
-            <div class="group-name">গ্রুপ এইচ (Group H)</div>
-            <div class="player">
-                <span class="player-name">Mostakim</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
+            <!-- Group D -->
+            <div class="group-header" style="margin-top: 15px;">গ্রুপ ডি (Group D)</div>
+            
+            <!-- Player 3 Profile -->
+            <div class="player-profile">
+                <div class="player-meta">
+                    <div class="player-photo">👤</div>
+                    <div class="player-details">
+                        <h4>Rumman sikhon</h4>
+                        <p><strong>Rank:</strong> #1 | <strong>Position:</strong> LWF (Winger)</p>
+                        <p><strong>eFootball ID:</strong> 159-753-456</p>
+                    </div>
+                </div>
+                <table class="stats-table">
+                    <thead>
+                        <tr><th>Wins</th><th>Draws</th><th>Losses</th><th>Goals</th><th>Assists</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>6</td><td>0</td><td>2</td><td>14</td><td>3</td></tr>
+                    </tbody>
+                </table>
+                <span class="qualify-txt">✓ সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
             </div>
-            <div class="player">
-                <span class="player-name">Ajmain</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
-        </div>
-
-        <!-- Group I -->
-        <div class="group-card">
-            <div class="group-name">গ্রুপ আই (Group I)</div>
-            <div class="player">
-                <span class="player-name">Sohan Mahmud</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
-            <div class="player">
-                <span class="player-name">Sst Sabit</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
-        </div>
-
-        <!-- Special Group -->
-        <div class="group-card special-group">
-            <div class="group-name" style="background: #ff9900;">विशेष গ্রুপ</div>
-            <div class="player">
-                <span class="player-name">Jubayed musa</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
-            <div class="player">
-                <span class="player-name">Tousuf</span>
-                <span class="qualify-tag">সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
-            </div>
-        </div>
-
-    </div>
-
-</body>
-            </html>
