@@ -31,18 +31,16 @@
             text-align: center;
         }
 
-        /* 🏙️ Club Logo & Club Banner */
+        /* 🏙️ Club Banner & Logo */
         .banner {
             background: linear-gradient(90deg, #161b22 0%, #0052cc 100%);
             padding: 40px 20px;
             border-bottom: 4px solid var(--primary);
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .club-logo { font-size: 55px; margin-bottom: 8px; }
-        .banner h1 { color: var(--primary); font-size: 28px; text-transform: uppercase; letter-spacing: 2px; }
-        
-        /* 🏷️ Club Motto */
-        .banner .motto { color: var(--accent); font-size: 14px; font-weight: bold; margin-top: 6px; font-style: italic; }
+        .club-logo { font-size: 50px; margin-bottom: 8px; }
+        .banner h1 { color: var(--primary); font-size: 26px; text-transform: uppercase; letter-spacing: 2px; }
+        .banner .motto { color: var(--accent); font-size: 14px; font-weight: bold; margin-top: 5px; font-style: italic; }
         
         .container { max-width: 650px; margin: 30px auto; padding: 0 15px; }
         
@@ -55,7 +53,7 @@
             text-align: left; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        .card-title { color: var(--primary); font-size: 19px; margin-bottom: 12px; text-transform: uppercase; border-left: 4px solid var(--secondary); padding-left: 10px; }
+        .card-title { color: var(--primary); font-size: 18px; margin-bottom: 15px; text-transform: uppercase; border-left: 4px solid var(--secondary); padding-left: 10px; font-weight: bold; }
         
         /* ⏳ Countdown Timer */
         .timer-grid { display: flex; gap: 10px; margin-top: 12px; }
@@ -63,34 +61,35 @@
         .timer-num { font-size: 22px; font-weight: bold; color: var(--accent); }
         .timer-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
-        /* 👥 Players Section Elements */
-        .group-header { background: var(--accent); color: #000; display: inline-block; padding: 4px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; margin-bottom: 15px; }
+        /* 👥 Players Section Settings */
+        .group-header { background: var(--accent); color: #000; display: inline-block; padding: 4px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; margin-bottom: 15px; margin-top: 10px; }
         .player-profile { background: var(--bg-input); border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid #30363d; }
         .player-meta { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
         
-        /* 👤 Player Photo (Emoji) */
+        /* 👤 Player Photo Placeholder */
         .player-photo { font-size: 32px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border: 1px solid #444; }
         
-        /* 📝 Player Name, ID, Position, Rank */
-        .player-details h4 { font-size: 17px; color: #fff; font-weight: bold; }
-        .player-details p { font-size: 13px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
+        /* 📝 Player Details */
+        .player-details h4 { font-size: 16px; color: #fff; font-weight: bold; }
+        .player-details p { font-size: 12px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
         
-        /* 📊 Player Statistics (Wins, Draws, Losses, Goals, Assists) */
+        /* 📊 Statistics Table */
         .stats-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; text-align: center; }
         .stats-table th { background: #11161d; color: var(--primary); font-weight: bold; padding: 8px; border: 1px solid #30363d; }
-        .stats-table td { padding: 8px; border: 1px solid #30363d; color: #fff; font-weight: 500; }
+        .stats-table td { padding: 8px; border: 1px solid #30363d; color: #fff; }
         
         .qualify-txt { color: var(--primary); font-size: 12px; font-weight: bold; display: block; margin-top: 10px; text-align: right; }
-        
+        .special-group { border-left: 5px solid var(--accent); }
+
         /* 👁️ Visitor Counter */
-        .visitor-counter { font-size: 14px; color: var(--text-muted); text-align: center; margin-top: 30px; background: var(--bg-card); padding: 12px; border-radius: 8px; border: 1px solid #30363d; }
+        .visitor-counter { font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 25px; }
     </style>
 </head>
 <body>
 
     <!-- 🏙️ CLUB LOGO & CLUB BANNER -->
     <div class="banner">
-        <div class="club-logo">⚽</div> 
+        <div class="club-logo">⚽</div> <!-- Club Logo -->
         <h1>Joypurhat eFootball Club</h1>
         <!-- 🏷️ CLUB MOTTO -->
         <p class="motto">"নৈপুণ্য আর লড়াইয়ে আমরাই সেরা" (Club Motto)</p>
@@ -101,26 +100,26 @@
         <!-- 👋 WELCOME MESSAGE -->
         <div class="card">
             <h3 class="card-title">👋 স্বাগতম (Welcome Message)</h3>
-            <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">জয়পুরহাট ই-ফুটবল ক্লাবের অফিশিয়াল ওয়েবসাইটে আপনাকে স্বাগতম। আমাদের ক্লাবের সিজন ১ এর মেইন টুর্নামেন্ট ডাটা এবং সেরা প্লেয়ারদের রেকর্ড দেখতে নিচে স্ক্রল করুন।</p>
+            <p style="color: var(--text-muted); font-size: 14px; line-height: 1.5;">জয়পুরহাট ই-ফুটবল ক্লাবের অফিশিয়াল ওয়েবসাইটে আপনাকে স্বাগতম। আমাদের ক্লাবের সমস্ত টুর্নামেন্ট আপডেট এবং প্লেয়ার রেকর্ড দেখতে নিচে স্ক্রল করুন।</p>
         </div>
 
         <!-- 📢 LATEST NEWS -->
         <div class="card">
             <h3 class="card-title">📢 সর্বশেষ খবর (Latest News)</h3>
-            <p style="font-size: 14px; line-height: 1.5;">🔥 অত্যন্ত আনন্দের সাথে জানানো যাচ্ছে যে, সিজন ১ এর মেইন নকআউট পর্বের জন্য আমাদের সেরা খেলোয়াড়রা সম্পূর্ণ প্রস্তুত! নিয়মিত লাইভ স্কোর ও ম্যাচ আপডেট পেতে আমাদের পেজে চোখ রাখুন।</p>
+            <p style="font-size: 14px;">🔥 সিজন ১ এর মেইন টুর্নামেন্ট বর্তমানে সফলভাবে চলছে! নিয়মিত লাইভ স্কোর ও ম্যাচ আপডেট পেতে আমাদের নোটিশে চোখ রাখুন।</p>
         </div>
 
         <!-- 🏆 RUNNING TOURNAMENT -->
         <div class="card">
             <h3 class="card-title">🏆 রানিং টুর্নামেন্ট (Running Tournament)</h3>
             <p style="font-size: 14px;"><strong>Tournament Name:</strong> Season 1 Main Stage</p>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;"><strong>Status:</strong> গ্রুপ পর্ব শেষ, বর্তমানে মূল পর্ব চলমান রয়েছে।</p>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;"><strong>Status:</strong> গ্রুপ পর্ব শেষ, বর্তমানে মূল পর্বের খেলা চলমান রয়েছে।</p>
         </div>
 
         <!-- ⏳ COUNTDOWN TIMER -->
         <div class="card">
             <h3 class="card-title">⏳ পরবর্তী ম্যাচ (Countdown Timer)</h3>
-            <p style="font-size: 13px; color: var(--text-muted);">পরবর্তী হাই-ভোল্টেজ ম্যাচ শুরু হতে বাকি:</p>
+            <p style="font-size: 13px; color: var(--text-muted);">পরবর্তী লাইভ ম্যাচ শুরু হতে বাকি:</p>
             <div class="timer-grid">
                 <div class="timer-box"><div class="timer-num">০২</div><div class="timer-lbl">দিন</div></div>
                 <div class="timer-box"><div class="timer-num">০৬</div><div class="timer-lbl">ঘণ্টা</div></div>
@@ -138,14 +137,14 @@
             <!-- Player 1 Profile -->
             <div class="player-profile">
                 <div class="player-meta">
-                    <div class="player-photo">👤</div> <!-- Player Photo -->
+                    <div class="player-photo">👤</div> <!-- Player Photo (Placeholder) -->
                     <div class="player-details">
                         <h4>Md Ratul</h4> <!-- Player Name -->
                         <p><strong>Rank:</strong> #1 | <strong>Position:</strong> CF (Forward)</p> <!-- Rank & Position -->
                         <p><strong>eFootball ID:</strong> 452-987-123</p> <!-- eFootball ID -->
                     </div>
                 </div>
-                <!-- Player Statistics (Goals, Assists, Wins, Draws, Losses) -->
+                <!-- Statistics (Wins, Draws, Losses, Goals, Assists) -->
                 <table class="stats-table">
                     <thead>
                         <tr><th>Wins</th><th>Draws</th><th>Losses</th><th>Goals</th><th>Assists</th></tr>
@@ -179,7 +178,7 @@
             </div>
 
             <!-- Group D -->
-            <div class="group-header" style="margin-top: 15px;">গ্রুপ ডি (Group D)</div>
+            <div class="group-header">গ্রুপ ডি (Group D)</div>
             
             <!-- Player 3 Profile -->
             <div class="player-profile">
@@ -201,3 +200,15 @@
                 </table>
                 <span class="qualify-txt">✓ সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
             </div>
+
+        </div>
+
+        <!-- 👁️ VISITOR COUNTER -->
+        <div class="visitor-counter">
+            📊 মোট ভিজিটর (Visitor Counter): <strong>১,৩৫০</strong> জন
+        </div>
+
+    </div>
+
+</body>
+</html>
