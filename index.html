@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joypurhat eFootball Club | Official</title>
+    <title>Joypurhat eFootball Club | Top 10 Features</title>
     <style>
         :root {
             --bg-dark: #0b0e14;
@@ -21,194 +21,289 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
-            background: linear-gradient(135deg, #0b0e14 0%, #1a2333 100%);
-            padding-bottom: 50px;
+            background: linear-gradient(135deg, #0b0e14 0%, #121824 100%);
+            padding-bottom: 60px;
+        }
+
+        /* 1. Club Logo & Menu Bar */
+        nav {
+            background: rgba(22, 27, 34, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            max-width: 70%;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: var(--bg-input);
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 20px 0;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-left: 4px solid var(--secondary);
+            padding-left: 10px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #30363d;
+        }
+
+        /* 2. Qualified Players */
+        .group-header {
+            background: var(--accent);
+            color: black;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+
+        /* 3 & 4. Tables for Tournament Table & Match Results */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th, td {
+            padding: 10px;
             text-align: center;
+            border-bottom: 1px solid #30363d;
         }
 
-        /* 🏙️ Club Banner & Logo */
-        .banner {
-            background: linear-gradient(90deg, #161b22 0%, #0052cc 100%);
-            padding: 40px 20px;
-            border-bottom: 4px solid var(--primary);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        th {
+            background-color: var(--secondary);
+            color: white;
         }
-        .club-logo { font-size: 50px; margin-bottom: 8px; }
-        .banner h1 { color: var(--primary); font-size: 26px; text-transform: uppercase; letter-spacing: 2px; }
-        .banner .motto { color: var(--accent); font-size: 14px; font-weight: bold; margin-top: 5px; font-style: italic; }
-        
-        .container { max-width: 650px; margin: 30px auto; padding: 0 15px; }
-        
-        .card { 
-            background: var(--bg-card); 
-            border-radius: 14px; 
-            padding: 20px; 
-            margin-bottom: 25px; 
-            border: 1px solid #30363d; 
-            text-align: left; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
+        /* 7. Registration Form Controls */
+        .form-group {
+            margin-bottom: 12px;
         }
-        .card-title { color: var(--primary); font-size: 18px; margin-bottom: 15px; text-transform: uppercase; border-left: 4px solid var(--secondary); padding-left: 10px; font-weight: bold; }
-        
-        /* ⏳ Countdown Timer */
-        .timer-grid { display: flex; gap: 10px; margin-top: 12px; }
-        .timer-box { background: var(--bg-input); padding: 12px; border-radius: 8px; flex: 1; text-align: center; border: 1px solid #3d4452; }
-        .timer-num { font-size: 22px; font-weight: bold; color: var(--accent); }
-        .timer-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
-        /* 👥 Players Section Settings */
-        .group-header { background: var(--accent); color: #000; display: inline-block; padding: 4px 12px; border-radius: 5px; font-weight: bold; font-size: 13px; margin-bottom: 15px; margin-top: 10px; }
-        .player-profile { background: var(--bg-input); border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid #30363d; }
-        .player-meta { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
-        
-        /* 👤 Player Photo Placeholder */
-        .player-photo { font-size: 32px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border: 1px solid #444; }
-        
-        /* 📝 Player Details */
-        .player-details h4 { font-size: 16px; color: #fff; font-weight: bold; }
-        .player-details p { font-size: 12px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
-        
-        /* 📊 Statistics Table */
-        .stats-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; text-align: center; }
-        .stats-table th { background: #11161d; color: var(--primary); font-weight: bold; padding: 8px; border: 1px solid #30363d; }
-        .stats-table td { padding: 8px; border: 1px solid #30363d; color: #fff; }
-        
-        .qualify-txt { color: var(--primary); font-size: 12px; font-weight: bold; display: block; margin-top: 10px; text-align: right; }
-        .special-group { border-left: 5px solid var(--accent); }
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+            text-align: left;
+        }
 
-        /* 👁️ Visitor Counter */
-        .visitor-counter { font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 25px; }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-input);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: white;
+            font-size: 13px;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: #000;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* 9. Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .gallery-item {
+            background: var(--bg-input);
+            aspect-ratio: 1;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border: 1px dashed #444;
+        }
+
+        /* 10. Social Media Grid */
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .fb-btn { background: #1877F2; }
+        .wa-btn { background: #25D366; color: black; }
     </style>
 </head>
 <body>
 
-    <!-- 🏙️ CLUB LOGO & CLUB BANNER -->
-    <div class="banner">
-        <div class="club-logo">⚽</div> <!-- Club Logo -->
-        <h1>Joypurhat eFootball Club</h1>
-        <!-- 🏷️ CLUB MOTTO -->
-        <p class="motto">"নৈপুণ্য আর লড়াইয়ে আমরাই সেরা" (Club Motto)</p>
-    </div>
+    <!-- 1. CLUB LOGO & NAVIGATION MENU -->
+    <nav>
+        <div class="logo-section">
+            <span>⚽</span> JEFC
+        </div>
+        <div class="nav-links">
+            <a href="#notice">নোটিশ</a>
+            <a href="#players">প্লেয়ার্স</a>
+            <a href="#table">টেবিল</a>
+            <a href="#results">রেজাল্ট</a>
+            <a href="#reg">রেজিস্ট্রেশন</a>
+        </div>
+    </nav>
 
     <div class="container">
-        
-        <!-- 👋 WELCOME MESSAGE -->
-        <div class="card">
-            <h3 class="card-title">👋 স্বাগতম (Welcome Message)</h3>
-            <p style="color: var(--text-muted); font-size: 14px; line-height: 1.5;">জয়পুরহাট ই-ফুটবল ক্লাবের অফিশিয়াল ওয়েবসাইটে আপনাকে স্বাগতম। আমাদের ক্লাবের সমস্ত টুর্নামেন্ট আপডেট এবং প্লেয়ার রেকর্ড দেখতে নিচে স্ক্রল করুন।</p>
-        </div>
 
-        <!-- 📢 LATEST NEWS -->
-        <div class="card">
-            <h3 class="card-title">📢 সর্বশেষ খবর (Latest News)</h3>
-            <p style="font-size: 14px;">🔥 সিজন ১ এর মেইন টুর্নামেন্ট বর্তমানে সফলভাবে চলছে! নিয়মিত লাইভ স্কোর ও ম্যাচ আপডেট পেতে আমাদের নোটিশে চোখ রাখুন।</p>
-        </div>
-
-        <!-- 🏆 RUNNING TOURNAMENT -->
-        <div class="card">
-            <h3 class="card-title">🏆 রানিং টুর্নামেন্ট (Running Tournament)</h3>
-            <p style="font-size: 14px;"><strong>Tournament Name:</strong> Season 1 Main Stage</p>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;"><strong>Status:</strong> গ্রুপ পর্ব শেষ, বর্তমানে মূল পর্বের খেলা চলমান রয়েছে।</p>
-        </div>
-
-        <!-- ⏳ COUNTDOWN TIMER -->
-        <div class="card">
-            <h3 class="card-title">⏳ পরবর্তী ম্যাচ (Countdown Timer)</h3>
-            <p style="font-size: 13px; color: var(--text-muted);">পরবর্তী লাইভ ম্যাচ শুরু হতে বাকি:</p>
-            <div class="timer-grid">
-                <div class="timer-box"><div class="timer-num">০২</div><div class="timer-lbl">দিন</div></div>
-                <div class="timer-box"><div class="timer-num">০৬</div><div class="timer-lbl">ঘণ্টা</div></div>
-                <div class="timer-box"><div class="timer-num">১৫</div><div class="timer-lbl">মিনিট</div></div>
+        <!-- 6. NOTICE BOARD SECTION -->
+        <section id="notice">
+            <h2 class="section-title">📢 ৬. নোটিশ বোর্ড (Notice Board)</h2>
+            <div class="card">
+                <p style="font-size:14px;"><strong style="color:red;">[LIVE]</strong> সিজন ১ এর মেইন টুর্নামেন্টের নকআউট পর্বের সময়সূচী নিচে দেওয়া হলো।</p>
             </div>
-        </div>
+        </section>
 
-        <!-- 👥 PLAYERS SECTION (NAME, PHOTO, ID, POSITION, RANK, STATS) -->
-        <div class="card">
-            <h3 class="card-title">👥 প্লেয়ার্স সেকশন (Players Section)</h3>
-            
-            <!-- Group C -->
-            <div class="group-header">গ্রুপ সি (Group C)</div>
-            
-            <!-- Player 1 Profile -->
-            <div class="player-profile">
-                <div class="player-meta">
-                    <div class="player-photo">👤</div> <!-- Player Photo (Placeholder) -->
-                    <div class="player-details">
-                        <h4>Md Ratul</h4> <!-- Player Name -->
-                        <p><strong>Rank:</strong> #1 | <strong>Position:</strong> CF (Forward)</p> <!-- Rank & Position -->
-                        <p><strong>eFootball ID:</strong> 452-987-123</p> <!-- eFootball ID -->
-                    </div>
-                </div>
-                <!-- Statistics (Wins, Draws, Losses, Goals, Assists) -->
-                <table class="stats-table">
+        <!-- 2 & 5. QUALIFIED PLAYERS & RANKINGS -->
+        <section id="players">
+            <h2 class="section-title">⚡ ২ & ৫. কোয়ালিফাইড প্লেয়ার ও র‍্যাঙ্কিং</h2>
+            <div class="card">
+                <div class="group-header">গ্রুপ সি (Rankings)</div>
+                <p>🥇 #1 Md Ratul — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
+                <p style="color:var(--text-muted); margin-top:4px;">🥈 #2 Mohasin — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
+            </div>
+            <div class="card">
+                <div class="group-header">গ্রুপ ডি (Rankings)</div>
+                <p>🥇 #1 Rumman sikhon — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
+                <p style="color:var(--text-muted); margin-top:4px;">🥈 #2 Foysal Fahim — <span style="color:var(--primary);">কোয়ালিফাইড</span></p>
+            </div>
+        </section>
+
+        <!-- 3. TOURNAMENT TABLE SECTION -->
+        <section id="table">
+            <h2 class="section-title">🏆 ৩. টুর্নামেন্ট টেবিল (Tournament Table)</h2>
+            <div class="card" style="padding:5px; overflow-x:auto;">
+                <table>
                     <thead>
-                        <tr><th>Wins</th><th>Draws</th><th>Losses</th><th>Goals</th><th>Assists</th></tr>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player Name</th>
+                            <th>Match</th>
+                            <th>Points</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr><td>5</td><td>2</td><td>1</td><td>12</td><td>4</td></tr>
+                        <tr><td>1</td><td>Md Ratul</td><td>3</td><td>9</td></tr>
+                        <tr><td>2</td><td>Rumman sikhon</td><td>3</td><td>7</td></tr>
                     </tbody>
                 </table>
-                <span class="qualify-txt">✓ সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
             </div>
+        </section>
 
-            <!-- Player 2 Profile -->
-            <div class="player-profile">
-                <div class="player-meta">
-                    <div class="player-photo">👤</div>
-                    <div class="player-details">
-                        <h4>Mohasin</h4>
-                        <p><strong>Rank:</strong> #2 | <strong>Position:</strong> AMF (Midfielder)</p>
-                        <p><strong>eFootball ID:</strong> 784-123-654</p>
-                    </div>
-                </div>
-                <table class="stats-table">
+        <!-- 4. MATCH RESULTS SECTION -->
+        <section id="results">
+            <h2 class="section-title">⚽ ৪. ম্যাচ রেজাল্ট (Match Results)</h2>
+            <div class="card" style="padding:5px; overflow-x:auto;">
+                <table>
                     <thead>
-                        <tr><th>Wins</th><th>Draws</th><th>Losses</th><th>Goals</th><th>Assists</th></tr>
+                        <tr>
+                            <th>ম্যাচ (Match)</th>
+                            <th>স্কোর (Score)</th>
+                            <th>বিজেতা (Winner)</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr><td>4</td><td>2</td><td>2</td><td>9</td><td>6</td></tr>
+                        <tr><td>Ratul vs Mohasin</td><td style="color:var(--accent);">3 - 1</td><td>Md Ratul</td></tr>
                     </tbody>
                 </table>
-                <span class="qualify-txt">✓ সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
             </div>
+        </section>
 
-            <!-- Group D -->
-            <div class="group-header">গ্রুপ ডি (Group D)</div>
-            
-            <!-- Player 3 Profile -->
-            <div class="player-profile">
-                <div class="player-meta">
-                    <div class="player-photo">👤</div>
-                    <div class="player-details">
-                        <h4>Rumman sikhon</h4>
-                        <p><strong>Rank:</strong> #1 | <strong>Position:</strong> LWF (Winger)</p>
-                        <p><strong>eFootball ID:</strong> 159-753-456</p>
+        <!-- 7. REGISTRATION FORM SECTION -->
+        <section id="reg">
+            <h2 class="section-title">📝 ৭. রেজিস্ট্রেশন ফর্ম (Registration Form)</h2>
+            <div class="card">
+                <form onsubmit="event.preventDefault(); alert('ধন্যবাদ! আপনার ডেটা ডেমো হিসেবে জমা হয়েছে।');">
+                    <div class="form-group">
+                        <label>প্লেয়ারের নাম (Player Name)</label>
+                        <input type="text" placeholder="যেমন: Md Nasim" required>
                     </div>
-                </div>
-                <table class="stats-table">
-                    <thead>
-                        <tr><th>Wins</th><th>Draws</th><th>Losses</th><th>Goals</th><th>Assists</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>6</td><td>0</td><td>2</td><td>14</td><td>3</td></tr>
-                    </tbody>
-                </table>
-                <span class="qualify-txt">✓ সিজন ১ এর জন্য কোয়ালিফাই করেছে</span>
+                    <div class="form-group">
+                        <label>ই-ফুটবল আইডি (eFootball ID)</label>
+                        <input type="text" placeholder="যেমন: 123-456-789" required>
+                    </div>
+                    <button type="submit" class="btn">আবেদন জমা দিন</button>
+                </form>
             </div>
+        </section>
 
-        </div>
-
-        <!-- 👁️ VISITOR COUNTER -->
-        <div class="visitor-counter">
-            📊 মোট ভিজিটর (Visitor Counter): <strong>১,৩৫০</strong> জন
-        </div>
-
-    </div>
-
-</body>
-</html>
+        <!-- 8. ADMIN PANEL SECTION -->
+        <section id="admin">
+            <h2 class="section-title">🔒 ৮. এডমিন প্যানেল (Admin Panel)</h2>
+            <div class="card">
+                <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">[ম্যানুয়াল গাইড] ওয়েবসাইট আপডেট করতে আপনার গিটহাব অ্যাকাউন্টে লগইন করে index.html ফাইলটি এডিট করুন।</p>
